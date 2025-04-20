@@ -5,11 +5,11 @@ import arbitrumLogo from './arbitrum-logo.svg';
 
 // Stock images URLs for the application
 // Contract and token details
-export const CONTRACT_ADDRESS = "0x6873E0257dACD3cC7D22B22d272e7f9DB32C2489";
+export const CONTRACT_ADDRESS = "0xdbC679E5AC36Aff84088bF13303F5Fb50Ed0528b";
 export const NETWORK_NAME = "Arbitrum";
 export const ARBISCAN_URL = `https://arbiscan.io/address/${CONTRACT_ADDRESS}`;
 export const TOKEN_SUPPLY = 100000000; // 100 million tokens
-export const REMAINING_FREE_TOKENS = 1750000; // 1.75 million tokens remaining for claiming
+export const REMAINING_FREE_TOKENS = 2000000; // 1.75 million tokens remaining for claiming
 
 export const images = {
   // Logos
