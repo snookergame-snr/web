@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "title": "SnookerGame (SNR) - เกมสนุกเกอร์ Web3 สุดมันส์ แข่งเดิมพัน รับเงินจริง"
+  },
+  "nav": {
+    "about": "เกี่ยวกับเกม",
+    "features": "ฟีเจอร์",
+    "roadmap": "Roadmap",
+    "faq": "FAQ",
+    "connectWallet": "Connect Wallet"
+  },
+  "language": {
+    "th": "Thai (TH)",
+    "en": "English (EN)"
+  },
+  "hero": {
+    "badge": "Web3 Snooker Game",
+    "heading": "แข่งสนุกเกอร์ รับรางวัลจริง!",
+    "subheading": "ใช้ฝีมือ แลก SNR Token ได้ทันที",
+    "description": "เกมสนุกเกอร์ออนไลน์บนเทคโนโลยี Web3 แข่งขันกับผู้เล่นจริง วางเดิมพัน และรับรางวัลด้วย SNR Token",
+    "buttons": {
+      "connectWallet": "Connect Wallet",
+      "claimFree": "Claim 1,000 SNR ฟรี",
+      "startPlaying": "เริ่มเล่นทันที"
+    },
+    "stats": {
+      "players": "ผู้เล่น",
+      "gamesPlayed": "เกมที่แข่ง",
+      "freeTokens": "SNR แจกฟรี"
+    }
+  },
+  "about": {
+    "title": "เกี่ยวกับ",
+    "subtitle": "เกม Web3 สนุกเกอร์ที่เล่นง่าย ใช้ทักษะจริง เล่นได้ทุกที่ทุกเวลา",
+    "features": {
+      "easyToPlay": {
+        "title": "เกมเล่นง่าย ใช้ทักษะจริง",
+        "description": "ระบบควบคุมที่ออกแบบมาให้เล่นง่าย แต่ต้องใช้ทักษะและกลยุทธ์เหมือนการเล่นสนุกเกอร์จริง ทั้งการกะระยะ การใช้สปิน และการวางแผนลูกต่อไป"
+      },
+      "turnBased": {
+        "title": "แทงผลัดกันคนละ 180 วินาที",
+        "description": "ผู้เล่นแต่ละคนมีเวลาในการแทงสนุกเกอร์คนละ 3 นาที ต่อการแทงหนึ่งครั้ง เพื่อให้เกมดำเนินไปอย่างรวดเร็วและสนุกสนาน"
+      },
+      "betting": {
+        "title": "วางเดิมพัน SNR และรับรางวัล",
+        "description": "ใช้ SNR Token ในการวางเดิมพันและรับรางวัลเมื่อชนะการแข่งขัน สามารถถอน Token ออกมาแลกเปลี่ยนเป็นเงินจริงได้"
+      },
+      "opponents": {
+        "title": "เล่นกับผู้เล่นจริง หรือ Bot 5 ระดับ",
+        "description": "เลือกแข่งกับผู้เล่นจริง หรือฝึกฝนกับ AI Bot ที่มีให้เลือกถึง 5 ระดับความยาก ตั้งแต่มือใหม่ไปจนถึงระดับมืออาชีพ"
+      }
+    },
+    "gameStatus": {
+      "currentGame": "เกมที่กำลังแข่ง",
+      "prize": "เงินรางวัล",
+      "level": "ระดับ",
+      "winRate": "ชนะ"
+    }
+  },
+  "features": {
+    "title": "ฟีเจอร์เด่น",
+    "subtitle": "รวมฟีเจอร์เด่นที่ทำให้ SnookerGame เป็นเกมสนุกเกอร์ Web3 ที่น่าเล่นที่สุด",
+    "items": {
+      "betting": {
+        "title": "เดิมพันได้จริง ด้วย SNR Token",
+        "description": "วางเดิมพันในการแข่งขันและรับรางวัลเป็น SNR Token ที่สามารถแลกเปลี่ยนได้บน Arbitrum DEX"
+      },
+      "nftCues": {
+        "title": "NFT ไม้คิว พร้อมค่าสถานะ",
+        "description": "ไม้คิว NFT ที่มีคุณสมบัติเฉพาะตัว ทั้งความแม่น, ความแรง, สปิน และอื่นๆ ที่ส่งผลต่อการเล่น"
+      },
+      "marketplace": {
+        "title": "Marketplace ซื้อขาย/เช่า",
+        "description": "ตลาดซื้อขาย เช่า หรืออัปเกรด Cue NFT เพื่อเพิ่มประสิทธิภาพในการเล่นและโอกาสชนะ"
+      },
+      "aiBot": {
+        "title": "เล่นกับ AI ได้ 5 ระดับความยาก",
+        "description": "ฝึกฝนและทดสอบทักษะกับ AI ที่มีให้เลือกถึง 5 ระดับความยาก ตั้งแต่มือใหม่ถึงระดับมืออาชีพ"
+      },
+      "freeClaim": {
+        "title": "Claim ฟรี 1,000 SNR",
+        "description": "ระบบ Claim ฟรี 1,000 SNR สำหรับผู้เล่นใหม่ จำกัด 2 ล้านเหรียญ เริ่มต้นเล่นได้ทันทีไม่ต้องลงทุน"
+      },
+      "tournaments": {
+        "title": "Tournament, Ranking, Daily Quest",
+        "description": "ระบบการแข่งขันทัวร์นาเมนต์ การจัดอันดับผู้เล่น และภารกิจรายวันเพื่อรับรางวัลพิเศษ"
+      }
+    },
+    "specialEdition": {
+      "title": "NFT ไม้คิวพิเศษ",
+      "description": "ไม้คิวรุ่นพิเศษสำหรับผู้เล่นยุคแรก มาพร้อมค่าสถานะเพิ่มพิเศษและดีไซน์เฉพาะ",
+      "stats": {
+        "accuracy": "ความแม่น +15%",
+        "power": "ความแรง +10%",
+        "spin": "ควบคุมสปิน +25%",
+        "bonus": "โบนัส SNR +5% ทุกครั้งที่ชนะ"
+      },
+      "button": "ดูรายละเอียด NFT"
+    }
+  },
+  "roadmap": {
+    "title": "Roadmap พัฒนา",
+    "subtitle": "แผนการพัฒนา SnookerGame จากจุดเริ่มต้นจนถึงเปิดให้บริการเต็มรูปแบบ",
+    "phases": {
+      "phase1": {
+        "title": "Setup",
+        "description": "Hosting, Token, Landing",
+        "status": "Completed"
+      },
+      "phase2": {
+        "title": "Claim",
+        "description": "Free Token Distribution",
+        "status": "In Progress"
+      },
+      "phase3": {
+        "title": "PvP Match",
+        "description": "Player vs Player Games",
+        "status": "Q2 2025"
+      },
+      "phase4": {
+        "title": "AI Bot",
+        "description": "AI Opponents",
+        "status": "Q3 2025"
+      },
+      "phase5": {
+        "title": "NFT + Marketplace",
+        "description": "NFT Integration",
+        "status": "Q4 2025"
+      },
+      "phase6": {
+        "title": "Extra Features",
+        "description": "Tournaments, Quests",
+        "status": "Q1 2026"
+      },
+      "phase7": {
+        "title": "Public Launch",
+        "description": "Full Release",
+        "status": "Q2 2026"
+      }
+    },
+    "earlyAccess": {
+      "title": "ร่วมเป็นส่วนหนึ่งกับเรา",
+      "description": "คุณสามารถมีส่วนร่วมในการพัฒนาเกม SnookerGame (SNR) ได้ตั้งแต่เฟสแรก รับสิทธิประโยชน์พิเศษและโอกาสในการได้รับ NFT หายากในอนาคต",
+      "buttons": {
+        "preRegister": "ลงทะเบียนล่วงหน้า",
+        "joinDiscord": "เข้าร่วม Discord"
+      }
+    }
+  },
+  "faq": {
+    "title": "คำถามที่พบบ่อย",
+    "subtitle": "ข้อสงสัยที่พบบ่อยเกี่ยวกับ SnookerGame (SNR)",
+    "questions": {
+      "wallet": {
+        "question": "ต้องมี Wallet ไหม?",
+        "answer": "ใช่ คุณจำเป็นต้องมี Crypto Wallet เช่น MetaMask เพื่อเชื่อมต่อกับเกม SnookerGame ซึ่งจะใช้สำหรับการรับ SNR Token, การเก็บ NFT ไม้คิว และการทำธุรกรรมต่างๆ ในเกม"
+      },
+      "howToStart": {
+        "question": "เริ่มเล่นได้ยังไง?",
+        "answer": "เริ่มเล่นได้ง่ายๆ เพียง 3 ขั้นตอน: 1) เชื่อมต่อ Wallet ของคุณกับเกม 2) Claim SNR Token ฟรี 1,000 SNR สำหรับผู้เล่นใหม่ 3) เริ่มแข่งขันกับผู้เล่นอื่นหรือ AI Bot"
+      },
+      "buyTokens": {
+        "question": "ต้องซื้อ Token ไหม?",
+        "answer": "ไม่จำเป็นต้องซื้อในช่วงเริ่มต้น ผู้เล่นใหม่ทุกคนสามารถรับ SNR Token ฟรี 1,000 เหรียญ (จำกัด 2 ล้านเหรียญแรกเท่านั้น) เพื่อเริ่มต้นเล่นเกมได้ทันที"
+      },
+      "tokenValue": {
+        "question": "SNR มีมูลค่าไหม?",
+        "answer": "ใช่ SNR Token มีมูลค่าและสามารถใช้ในเกม สำหรับการเดิมพัน, ซื้อขาย NFT และอีกมากมาย นอกจากนี้ยังสามารถซื้อขายแลกเปลี่ยนได้บน Arbitrum DEX"
+      },
+      "devices": {
+        "question": "เล่นบนอุปกรณ์ใดได้บ้าง?",
+        "answer": "SnookerGame (SNR) สามารถเล่นได้บนคอมพิวเตอร์ PC, Mac และอุปกรณ์มือถือ ทั้ง Android และ iOS ผ่านเว็บเบราว์เซอร์ที่รองรับ Web3 (เช่น Chrome หรือแอพพิเคชั่น MetaMask)"
+      }
+    },
+    "moreQuestions": "ยังมีข้อสงสัยอื่น? ติดต่อเราได้โดยตรงผ่านช่องทางต่อไปนี้",
+    "socialButtons": {
+      "discord": "Discord",
+      "telegram": "Telegram",
+      "twitter": "X (Twitter)",
+      "contact": "Contact"
+    }
+  },
+  "cta": {
+    "title": "ร่วมเป็นส่วนหนึ่งของ SnookerGame วันนี้",
+    "description": "เริ่มต้นเล่นและรับ 1,000 SNR Token ฟรีทันที พร้อมโอกาสในการได้รับ NFT ไม้คิวพิเศษสำหรับผู้เล่นยุคแรกเท่านั้น",
+    "buttons": {
+      "connectWallet": "Connect Wallet",
+      "startPlaying": "เริ่มเล่นทันที"
+    },
+    "community": "ผู้เล่นในชุมชนของเรา"
+  },
+  "footer": {
+    "sections": {
+      "game": {
+        "title": "เกม",
+        "links": ["เริ่มเล่น", "ฝึกกับ AI", "ทัวร์นาเมนต์", "อันดับผู้เล่น", "คู่มือการเล่น"]
+      },
+      "nftToken": {
+        "title": "NFT & Token",
+        "links": ["Marketplace", "SNR Token", "Claim ฟรี", "ไม้คิว NFT", "Tokenomics"]
+      },
+      "about": {
+        "title": "เกี่ยวกับ",
+        "links": ["ทีมงาน", "White Paper", "Smart Contract", "นโยบายความเป็นส่วนตัว", "ติดต่อเรา"]
+      }
+    },
+    "copyright": "© 2025 SnookerGame.xyz — Powered by SNR",
+    "legal": {
+      "privacy": "นโยบายความเป็นส่วนตัว",
+      "terms": "เงื่อนไขการใช้งาน"
+    }
+  }
+}
