@@ -43,12 +43,37 @@ export default function Home() {
 
   const handleConnectWallet = async () => {
     if (!window.ethereum) return;
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const chainIdHex = "0x66eee"; // = 421614
+  
+    const chainInfo = {
+      chainId: chainIdHex,
+      chainName: "Arbitrum Sepolia Testnet",
+      nativeCurrency: {
+        name: "Ethereum",
+        symbol: "ETH",
+        decimals: 18,
+      },
+      rpcUrls: ["https://sepolia-rollup.arbitrum.io/rpc"],
+      blockExplorerUrls: ["https://sepolia.arbiscan.io/"],
+    };
+  
     try {
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      // ✅ ลองเพิ่ม Chain ก่อนเชื่อม wallet
+      await window.ethereum.request({
+        method: "wallet_addEthereumChain",
+        params: [chainInfo],
+      });
+    } catch (err) {
+      console.warn("Skipped or already added chain:", err);
+    }
+  
+    try {
+      // ✅ เชื่อม wallet
       const accounts = await provider.send("eth_requestAccounts", []);
       const address = accounts[0];
       setWalletAddress(address);
-
+  
       const contract = new ethers.Contract(CONTRACT_ADDRESS, ["function balanceOf(address) view returns (uint256)"], provider);
       const balance = await contract.balanceOf(address);
       const formatted = ethers.utils.formatUnits(balance, 18);
