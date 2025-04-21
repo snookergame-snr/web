@@ -1,6 +1,5 @@
-// ✅ HeroSection.tsx (ลบปุ่ม Connect ออก เพราะย้ายไปแสดงใน Navbar แทน)
+// ✅ HeroSection.tsx (ใช้ useWallet แทน props)
 
-import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from 'react-i18next';
 import { Gift, Play } from 'lucide-react';
@@ -8,19 +7,16 @@ import { motion } from 'framer-motion';
 import { images, CONTRACT_ADDRESS } from '@/assets/images';
 import { ethers } from "ethers";
 import { useLocation } from "wouter";
+import { useWallet } from "@/contexts/WalletContext";
 
-export default function HeroSection({
-  walletAddress,
-  setWalletAddress,
-}: {
-  walletAddress: string | null;
-  setWalletAddress: (addr: string | null) => void;
-}) {
+export default function HeroSection() {
   const { t } = useTranslation();
+  const { walletAddress } = useWallet(); // ✅ ใช้ context แทน props
+  const [, navigate] = useLocation();
 
   const handleClaimToken = async () => {
     if (!window.ethereum || !walletAddress) {
-      alert("Please connect wallet first.");
+      alert("❌ Please connect wallet first.");
       return;
     }
 
@@ -48,13 +44,15 @@ export default function HeroSection({
       alert("❌ Claim failed. Please check eligibility or try again.");
     }
   };
-  const [, navigate] = useLocation();
+
   const handleStartPlaying = () => {
     if (!walletAddress) {
       alert("❌ Please connect your wallet first.");
       return;
     }
-    navigate(`/lobby?wallet=${walletAddress}`);
+    //alert(walletAddress)
+    alert("✅ Goto lobby Game...");
+    navigate('/lobby');
   };
 
   return (

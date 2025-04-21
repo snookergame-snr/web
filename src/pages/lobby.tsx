@@ -10,6 +10,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { useLocation } from "wouter";
+import { useWallet } from '@/contexts/WalletContext';
 import { 
   Select,
   SelectContent,
@@ -27,6 +28,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Progress } from "@/components/ui/progress";
+import { ethers } from "ethers";
 import { images } from '@/assets/images';
 import {
   Wallet,
@@ -63,6 +65,9 @@ import {
   TooltipProvider, 
   TooltipTrigger 
 } from '@/components/ui/tooltip';
+
+
+
 
 interface OnlinePlayer {
   id: string;
@@ -143,8 +148,55 @@ export default function LobbyPage() {
   const [currentInvitation, setCurrentInvitation] = useState<Invitation | null>(null);
   const [selectedBotDifficulty, setSelectedBotDifficulty] = useState<'easy' | 'normal' | 'hard' | 'expert' | 'master'>('normal');
   const notificationSound = useRef<HTMLAudioElement | null>(null);
-  const [location] = useLocation();
-  const walletAddress = new URLSearchParams(location.split('?')[1]).get("wallet");
+  const { walletAddress, snrBalance } = useWallet();
+  
+  useEffect(() => {
+    const checkWallet = async () => {
+      if (!walletAddress) return;
+  
+      if (!ethers.utils.isAddress(walletAddress)) {
+        alert(`❌ Wallet address ไม่ถูกต้อง`);
+        return;
+      }
+  
+      try {
+        const balance = await getSnrBalance(walletAddress);
+        console.log("💰 SNR Raw Balance:", balance);
+  
+        const floatBalance = parseFloat(balance);
+        setSnrBalance(floatBalance.toFixed(2));
+      } catch (err) {
+        console.error("❌ ไม่สามารถตรวจสอบยอด SNR ได้", err);
+      }
+    };
+  
+    checkWallet();
+  }, [walletAddress]);
+  
+  
+ 
+  const shortAddress = (addr: string) => {
+    return addr ? `${addr.slice(0, 6)}...${addr.slice(-4)}` : 'N/A';
+  };
+
+  
+
+  useEffect(() => {
+    const loadBalance = async () => {
+      if (walletAddress && ethers.utils.isAddress(walletAddress)) {
+        try {
+          const balance = await getSnrBalance(walletAddress); // ✅ ใช้ฟังก์ชันที่ถูกต้อง
+          setSnrBalance(parseFloat(balance).toFixed(2));
+        } catch (err) {
+          console.error("Error fetching SNR:", err);
+          setSnrBalance("0");
+        }
+      }
+    };
+
+    loadBalance();
+  }, [walletAddress]);
+
 
 
   // Mock data
@@ -584,8 +636,12 @@ export default function LobbyPage() {
               {/* Wallet or Connect Button */}
               <div className="bg-[#2D3748] px-3 py-1.5 rounded-lg flex items-center space-x-2">
                 <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                <span className="text-xs font-medium">0x65A2...3f8f9</span>
-                <span className="text-[#F8BF23] text-xs font-semibold">1,000 SNR</span>
+                <span className="text-xs font-medium">
+                  {walletAddress ? shortAddress(walletAddress) : 'Not Connected'}
+                </span>
+                <span className="text-[#F8BF23] text-xs font-semibold">
+                  {snrBalance !== null ? `${snrBalance} SNR` : 'Loading...'}
+                </span>
               </div>
             </div>
             
@@ -619,11 +675,13 @@ export default function LobbyPage() {
                   <button className="px-2 py-1 text-xs font-medium bg-[#2D3748] rounded hover:bg-[#3D4A5F]">
                     EN | TH
                   </button>
-                  
+
                   <div className="bg-[#2D3748] px-3 py-1.5 rounded-lg flex items-center space-x-2">
                     <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                    <span className="text-xs font-medium">0x65A2...3f8f9</span>
-                    <span className="text-[#F8BF23] text-xs font-semibold">1,000 SNR</span>
+                    <span className="text-xs font-medium">
+                      {walletAddress ? shortAddress(walletAddress) : 'Not Connected'}
+                    </span>
+                     {contextSnrBalance !== null ? `${contextSnrBalance} SNR` : 'Loading...'}
                   </div>
                 </div>
               </div>

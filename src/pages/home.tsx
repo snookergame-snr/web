@@ -12,6 +12,8 @@ import CTASection from '@/components/cta-section';
 import Footer from '@/components/footer';
 import { ethers } from 'ethers';
 import { CONTRACT_ADDRESS } from '@/assets/images';
+import { useWallet } from '@/contexts/WalletContext';
+
 
 export default function Home() {
   const [walletAddress, setWalletAddress] = useState<string | null>(null);

@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useTranslation } from 'react-i18next';
@@ -6,16 +5,10 @@ import LanguageToggle from './language-toggle';
 import { Menu, Wallet } from 'lucide-react';
 import { images } from '@/assets/images';
 import { useEffect, useState } from "react";
+import { useWallet } from "@/contexts/WalletContext";
 
-export default function Navbar({
-  walletAddress,
-  snrBalance,
-  onConnect,
-}: {
-  walletAddress: string | null;
-  snrBalance: string | null;
-  onConnect: () => void;
-}) {
+export default function Navbar() {
+  const { walletAddress, snrBalance, onConnect } = useWallet(); // ✅ ย้ายมาไว้ตรงนี้
   const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -62,7 +55,7 @@ export default function Navbar({
             <div className="hidden md:flex items-center space-x-2 bg-[#F8BF23] text-[#14191F] font-semibold px-4 py-2 rounded-xl shadow-lg">
               <Wallet className="w-4 h-4" />
               <span>
-                {walletAddress.slice(0, 6)}...{walletAddress.slice(-4)} | {snrBalance ?? '...'}
+              {walletAddress.slice(0, 6)}...{walletAddress.slice(-4)} | {snrBalance ? snrBalance + " SNR" : '...'}
               </span>
             </div>
           ) : (
