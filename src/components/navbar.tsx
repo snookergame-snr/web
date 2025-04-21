@@ -1,41 +1,37 @@
-import { useState, useEffect } from 'react';
+
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useTranslation } from 'react-i18next';
 import LanguageToggle from './language-toggle';
 import { Menu, Wallet } from 'lucide-react';
 import { images } from '@/assets/images';
+import { useEffect, useState } from "react";
 
-export default function Navbar() {
+export default function Navbar({
+  walletAddress,
+  snrBalance,
+  onConnect,
+}: {
+  walletAddress: string | null;
+  snrBalance: string | null;
+  onConnect: () => void;
+}) {
   const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 10);
     };
-
     window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const headerOffset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+    const el = document.getElementById(id);
+    if (el) {
+      const offset = el.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top: offset, behavior: 'smooth' });
     }
   };
 
@@ -46,43 +42,35 @@ export default function Navbar() {
           <img src={images.logoIcon} alt="SnookerGame Logo" className="w-10 h-10" />
           <span className="font-['Kanit'] font-bold text-xl text-white">SnookerGame</span>
         </a>
-        
+
         <div className="hidden md:flex items-center space-x-6">
-          <button 
-            onClick={() => scrollToSection('about')} 
-            className="nav-item text-gray-300 hover:text-white font-medium transition relative"
-          >
-            {t('nav.about')}
-          </button>
-          <button 
-            onClick={() => scrollToSection('features')} 
-            className="nav-item text-gray-300 hover:text-white font-medium transition relative"
-          >
-            {t('nav.features')}
-          </button>
-          <button 
-            onClick={() => scrollToSection('roadmap')} 
-            className="nav-item text-gray-300 hover:text-white font-medium transition relative"
-          >
-            {t('nav.roadmap')}
-          </button>
-          <button 
-            onClick={() => scrollToSection('faq')} 
-            className="nav-item text-gray-300 hover:text-white font-medium transition relative"
-          >
-            {t('nav.faq')}
-          </button>
+          {["about", "features", "roadmap", "faq"].map((id) => (
+            <button
+              key={id}
+              onClick={() => scrollToSection(id)}
+              className="nav-item text-gray-300 hover:text-white font-medium transition relative"
+            >
+              {t(`nav.${id}`)}
+            </button>
+          ))}
         </div>
-        
+
         <div className="flex items-center space-x-4">
           <LanguageToggle />
-          
-          <Button 
-            className="hidden md:flex bg-[#F8BF23] hover:bg-[#FFCF47] text-[#14191F] font-semibold transition transform hover:-translate-y-0.5 hover:shadow-lg"
-          >
-            <Wallet className="mr-2 h-4 w-4" /> {t('nav.connectWallet')}
-          </Button>
-          
+
+          {walletAddress ? (
+            <div className="hidden md:flex items-center space-x-2 bg-[#F8BF23] text-[#14191F] font-semibold px-4 py-2 rounded-xl shadow-lg">
+              <Wallet className="w-4 h-4" />
+              <span>
+                {walletAddress.slice(0, 6)}...{walletAddress.slice(-4)} | {snrBalance ?? '...'}
+              </span>
+            </div>
+          ) : (
+            <Button onClick={onConnect} className="hidden md:flex bg-[#F8BF23] hover:bg-[#FFCF47] text-[#14191F] font-semibold transition transform hover:-translate-y-0.5 hover:shadow-lg">
+              <Wallet className="mr-2 h-4 w-4" /> {t('nav.connectWallet')}
+            </Button>
+          )}
+
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="md:hidden text-white">
@@ -91,35 +79,24 @@ export default function Navbar() {
             </SheetTrigger>
             <SheetContent className="bg-[#1E2530] border-neutral-medium/50">
               <div className="flex flex-col space-y-6 mt-10">
-                <button 
-                  onClick={() => scrollToSection('about')} 
-                  className="text-gray-300 hover:text-white font-medium transition text-left"
-                >
-                  {t('nav.about')}
-                </button>
-                <button 
-                  onClick={() => scrollToSection('features')} 
-                  className="text-gray-300 hover:text-white font-medium transition text-left"
-                >
-                  {t('nav.features')}
-                </button>
-                <button 
-                  onClick={() => scrollToSection('roadmap')} 
-                  className="text-gray-300 hover:text-white font-medium transition text-left"
-                >
-                  {t('nav.roadmap')}
-                </button>
-                <button 
-                  onClick={() => scrollToSection('faq')} 
-                  className="text-gray-300 hover:text-white font-medium transition text-left"
-                >
-                  {t('nav.faq')}
-                </button>
-                <Button 
-                  className="bg-[#F8BF23] hover:bg-[#FFCF47] text-[#14191F] font-semibold w-full justify-start"
-                >
-                  <Wallet className="mr-2 h-4 w-4" /> {t('nav.connectWallet')}
-                </Button>
+                {["about", "features", "roadmap", "faq"].map((id) => (
+                  <button
+                    key={id}
+                    onClick={() => scrollToSection(id)}
+                    className="text-gray-300 hover:text-white font-medium transition text-left"
+                  >
+                    {t(`nav.${id}`)}
+                  </button>
+                ))}
+                {walletAddress ? (
+                  <div className="bg-[#F8BF23] text-[#14191F] font-semibold px-4 py-3 rounded-lg">
+                    {walletAddress.slice(0, 6)}...{walletAddress.slice(-4)} | {snrBalance ?? '...'}
+                  </div>
+                ) : (
+                  <Button onClick={onConnect} className="bg-[#F8BF23] hover:bg-[#FFCF47] text-[#14191F] font-semibold w-full justify-start">
+                    <Wallet className="mr-2 h-4 w-4" /> {t('nav.connectWallet')}
+                  </Button>
+                )}
               </div>
             </SheetContent>
           </Sheet>
