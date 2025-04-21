@@ -7,6 +7,7 @@ import { Gift, Play } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { images, CONTRACT_ADDRESS } from '@/assets/images';
 import { ethers } from "ethers";
+import { useLocation } from "wouter";
 
 export default function HeroSection({
   walletAddress,
@@ -47,9 +48,13 @@ export default function HeroSection({
       alert("❌ Claim failed. Please check eligibility or try again.");
     }
   };
-
+  const [, navigate] = useLocation();
   const handleStartPlaying = () => {
-    alert("Start Playing functionality would be implemented here");
+    if (!walletAddress) {
+      alert("❌ Please connect your wallet first.");
+      return;
+    }
+    navigate(`/lobby?wallet=${walletAddress}`);
   };
 
   return (
